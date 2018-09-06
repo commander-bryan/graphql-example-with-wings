@@ -10,7 +10,7 @@ console.log('-----------');
 // NOTE: For other nodemon configuration see `nodemon.json`.
 
 nodemon('src/server.js --exec babel-node')
-    .on('start', () => console.log('Starting twig-graph at localhost:3001/graphql'))
+    .on('start', () => console.log('Starting graphql-example-with-wings at localhost:5050/graphql'))
     .on('quit', () => process.exit(0))
     .on('restart', files => files ?
         console.log('GraphQL restarted due to', files[0]) :
