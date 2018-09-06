@@ -10,6 +10,7 @@
     "scripts": {
         "start": "node runlocal.js",
         "build": "babel src -d dist",
+        "test": "jest --no-cache",
         "apollo": "apollo",
         "lint": "eslint ./src"
     },
@@ -26,10 +27,11 @@
         "body-parser": "^1.18.2",
         "cors": "^2.8.4",
         "express": "^4.16.2",
+        "graphql": "0.13.2",
         "graphql-iso-date": "^3.5.0",
         "graphql-tools": "2.20.2",
         "graphql-type-json": "^0.1.4",
-        "lodash": "^4.17.10"
+        "lodash.merge": "^4.6.1"
     },
     "devDependencies": {
         "apollo": "^1.0.5",
@@ -39,6 +41,7 @@
         "eslint-plugin-import": "^2.2.0",
         "eslint-plugin-jsx-a11y": "^3.0.2",
         "eslint-plugin-react": "^6.9.0",
+        "jest": "^23.5.0",
         "nock": "^9.0.6",
         "nodemon": "^1.11.0",
         "pre-push": "^0.1.1",
@@ -46,5 +49,14 @@
     },
     "pre-push": [
         "lint"
-    ]
+    ],
+    "jest": {
+        "moduleFileExtensions": [
+            "js"
+        ],
+        "modulePathIgnorePatterns": [
+            "dist/"
+        ],
+        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.js$"
+    }
 }

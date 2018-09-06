@@ -1,0 +1,30 @@
+type WingsReview {
+    wings: Wings!
+    location: Location!
+}
+
+type Wings {
+    sauce: Rating!
+    price: Rating!
+    quality: Rating!
+}
+
+type Rating {
+    description: String!
+    givenStars: Int!
+    totalStars: Int!
+}
+
+type Location {
+    name: String!
+    description: String
+    address: String!
+    district: String!
+}
+
+# -----------------------------------------------------------------------------
+# Queries
+
+extend type Query {
+    WingsReview(id: String!): WingsReview
+}
