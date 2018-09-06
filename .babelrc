@@ -1,0 +1,28 @@
+{
+    "presets": [
+        [
+            "babel-preset-env",
+            {
+                "targets": {
+                    "node": "8.9.4"
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "transform-object-rest-spread",
+        [
+            "inline-json-import",
+            {}
+        ],
+        [
+            "babel-plugin-inline-import",
+            {
+                "extensions": [
+                    ".graphql",
+                    ".graphqls"
+                ]
+            }
+        ]
+    ]
+}

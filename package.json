@@ -1,0 +1,48 @@
+{
+    "name": "graphql-demo",
+    "version": "1.0.0",
+    "description": "GraphQL server",
+    "engines": {
+        "node": "8.9.4",
+        "yarn": "1.7.0"
+    },
+    "main": "server.js",
+    "scripts": {
+        "start": "node runlocal.js",
+        "build": "babel src -d dist",
+        "apollo": "apollo"
+    },
+    "author": "Bryan Miller",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "apollo-server-express": "^1.3.2",
+        "babel-cli": "^6.18.0",
+        "babel-plugin-inline-import": "^2.0.6",
+        "babel-plugin-inline-json-import": "^0.2.1",
+        "babel-plugin-transform-object-rest-spread": "^6.23.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-register": "^6.11.6",
+        "body-parser": "^1.18.2",
+        "cors": "^2.8.4",
+        "express": "^4.16.2",
+        "graphql-iso-date": "^3.5.0",
+        "graphql-tools": "2.20.2",
+        "graphql-type-json": "^0.1.4"
+    },
+    "devDependencies": {
+        "apollo": "^1.0.5",
+        "dotenv": "^5.0.1",
+        "eslint": "^3.14.1",
+        "eslint-config-airbnb": "^14.0.0",
+        "eslint-plugin-import": "^2.2.0",
+        "eslint-plugin-jsx-a11y": "^3.0.2",
+        "eslint-plugin-react": "^6.9.0",
+        "nock": "^9.0.6",
+        "nodemon": "^1.11.0",
+        "pre-push": "^0.1.1",
+        "supertest": "^3.0.0"
+    },
+    "pre-push": [
+        "lint"
+    ]
+}

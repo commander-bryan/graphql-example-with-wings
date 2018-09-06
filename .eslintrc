@@ -1,0 +1,17 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "indent": [2, 4],                                   # 4 spaces for indentation
+        "max-len": [2, 120],                                # 120 max line length
+        "prefer-const": 0,                                  # Need to come back to this when mocks are refactored
+        "no-param-reassign": 0,                             # Required for authorisation
+        "eqeqeq": 0,                                         # Need to come back to this when mocks are refactored
+        "no-multi-str": 0,
+        "no-underscore-dangle": 0
+    },
+    "env": {
+        "browser": false,
+        "node": true,
+        "jest": true
+    }
+}

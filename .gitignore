@@ -1,0 +1,43 @@
+# Node build artifacts
+node_modules
+npm-debug.log
+package-lock.json
+
+# Logs and databases
+logs
+*.log
+*.sql
+*.sqlite
+
+# Local development
+*.env
+*.dev
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+coverage
+
+# Webstorm
+.idea
+graphql.config.json
+graphql.schema.json
+
+# Editors
+.vscode
+
+# Dist
+dist
+
+# Swap files
+**/*.swp
+
+# NPM Security reports
+.snyk
+*.tgz
+
+# Test output
+reports
