@@ -10,7 +10,8 @@
     "scripts": {
         "start": "node runlocal.js",
         "build": "babel src -d dist",
-        "apollo": "apollo"
+        "apollo": "apollo",
+        "lint": "eslint ./src"
     },
     "author": "Bryan Miller",
     "license": "UNLICENSED",
@@ -27,7 +28,8 @@
         "express": "^4.16.2",
         "graphql-iso-date": "^3.5.0",
         "graphql-tools": "2.20.2",
-        "graphql-type-json": "^0.1.4"
+        "graphql-type-json": "^0.1.4",
+        "lodash": "^4.17.10"
     },
     "devDependencies": {
         "apollo": "^1.0.5",
