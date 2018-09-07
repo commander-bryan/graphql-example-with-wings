@@ -1,4 +1,5 @@
 type WingsReview {
+    id: String!
     wings: Wings!
     location: Location!
 }
@@ -23,8 +24,42 @@ type Location {
 }
 
 # -----------------------------------------------------------------------------
+# Inputs
+
+input WingsReviewInput {
+    wings: WingsInput!
+    location: LocationInput!
+}
+
+input WingsInput {
+    sauce: RatingInput!
+    price: RatingInput!
+    quality: RatingInput!
+}
+
+input RatingInput {
+    description: String!
+    givenStars: Int!
+    totalStars: Int!
+}
+
+input LocationInput {
+    name: String!
+    description: String
+    address: String!
+    district: String!
+}
+
+# -----------------------------------------------------------------------------
 # Queries
 
 extend type Query {
     WingsReview(id: String!): WingsReview
+}
+
+# -----------------------------------------------------------------------------
+# Mutations
+
+extend type Mutation {
+    AddReview(input: WingsReviewInput!): WingsReview!
 }
