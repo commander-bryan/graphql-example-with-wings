@@ -31,7 +31,8 @@
         "graphql-iso-date": "^3.5.0",
         "graphql-tools": "2.20.2",
         "graphql-type-json": "^0.1.4",
-        "lodash.merge": "^4.6.1"
+        "lodash.merge": "^4.6.1",
+        "uuid": "^3.3.2"
     },
     "devDependencies": {
         "apollo": "^1.0.5",
