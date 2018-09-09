@@ -22,8 +22,36 @@ function getTestSchema() {
 }
 
 describe('Wings', () => {
-    const query = `query {
+    const wingsReviewQuery = `query {
        WingsReview(id: "review_1") {
+            wings {
+                sauce {
+                    description
+                    givenStars
+                    totalStars
+                }
+                price {
+                    description
+                    givenStars
+                    totalStars
+                }
+                quality {
+                    description
+                    givenStars
+                    totalStars
+                }
+            }
+            location {
+                name
+                description
+                address
+                district
+            }
+            __typename
+        }
+    }`;
+    const wingsReviewsQuery = `query {
+       WingsReviews {
             wings {
                 sauce {
                     description
@@ -66,7 +94,7 @@ describe('Wings', () => {
                         },
                         preserveResolvers: true,
                     });
-                    response = await graphql(testSchema, query);
+                    response = await graphql(testSchema, wingsReviewQuery);
                 });
 
                 test('no errors returned', () => {
@@ -125,6 +153,39 @@ describe('Wings', () => {
 
                     test('district is returned', () => {
                         expect(response.data.WingsReview.location.district).toBeDefined();
+                    });
+                });
+            });
+            describe('WingsReviews', () => {
+                let response;
+
+                beforeAll(async () => {
+                    const testSchema = getTestSchema();
+                    addMockFunctionsToSchema({
+                        schema: testSchema,
+                        mocks: {
+                            JSON: () => (JSON.stringify({ foo: 'bar' })),
+                            WingsReview: () => ({ __typename: 'WingsReview' }),
+                            WingsReviews: () => ({ __typename: 'WingsReviews' }),
+                        },
+                        preserveResolvers: true,
+                    });
+                    response = await graphql(testSchema, wingsReviewsQuery);
+                });
+
+                test('no errors returned', () => {
+                    expect(response.errors).toBeUndefined();
+                });
+
+                describe('wings', () => {
+                    test('is returned', () => {
+                        expect(response.data.WingsReviews).toBeDefined();
+                    });
+
+                    test('is an array of WingsReview types', () => {
+                        expect(response.data.WingsReviews instanceof Array).toBe(true);
+                        expect(response.data.WingsReviews[0].__typename).toBe('WingsReview');
+                        expect(response.data.WingsReviews[1].__typename).toBe('WingsReview');
                     });
                 });
             });

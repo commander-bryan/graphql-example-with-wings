@@ -54,7 +54,8 @@ input LocationInput {
 # Queries
 
 extend type Query {
-    WingsReview(id: String!): WingsReview
+    WingsReview(id: String!): WingsReview!
+    WingsReviews: [WingsReview]!
 }
 
 # -----------------------------------------------------------------------------

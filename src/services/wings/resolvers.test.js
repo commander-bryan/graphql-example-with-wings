@@ -92,6 +92,40 @@ describe('Wings Resolver Map', () => {
                 expect(actual.location.district).toBeDefined();
             });
         });
+        describe('WingsReviews', () => {
+            let actual;
+
+            beforeEach(async () => {
+                context = {
+                    getReviews: jest.fn(() => [mockWingsReview]),
+                };
+                actual = await resolverMap.Query.WingsReviews(undefined, { }, context);
+            });
+
+            test('returns an array', () => {
+                expect(actual).toBeDefined();
+                expect(actual instanceof Array).toEqual(true);
+            });
+
+            test('returns a WingsReview in a array', () => {
+                expect(actual[0].wings).toBeDefined();
+                expect(actual[0].location).toBeDefined();
+            });
+
+            test('returns a Wings entry', () => {
+                expect(actual[0].wings).toBeDefined();
+                expect(actual[0].wings.sauce).toBeDefined();
+                expect(actual[0].wings.price).toBeDefined();
+                expect(actual[0].wings.quality).toBeDefined();
+            });
+
+            test('returns a Location entry', () => {
+                expect(actual[0].location).toBeDefined();
+                expect(actual[0].location.name).toBeDefined();
+                expect(actual[0].location.address).toBeDefined();
+                expect(actual[0].location.district).toBeDefined();
+            });
+        });
     });
 
     describe('Mutation', () => {
