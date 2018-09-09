@@ -65,6 +65,16 @@ const buildContext = (request, response) => {
         };
     };
 
+    const getReviews = () => {
+        const rawReviewIds = Object.keys(db.WingsReview);
+        const rawReviews = rawReviewIds.map(id => ({
+            id,
+            wings: getWings(db.WingsReview[id].wings),
+            location: getLocation(db.WingsReview[id].location),
+        }));
+        return rawReviews;
+    };
+
     const addLocation = (location) => {
         const id = uuid();
         db.Location[id] = location;
@@ -103,6 +113,7 @@ const buildContext = (request, response) => {
         request,
         response,
         getReview,
+        getReviews,
         addNewWingsReview,
     };
 };
