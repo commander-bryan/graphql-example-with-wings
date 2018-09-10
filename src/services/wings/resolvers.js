@@ -5,8 +5,9 @@ const resolverMap = {
     },
     Mutation: {
         AddReview: async (_, { input }, context) => context.addNewWingsReview(input).then(
-                id => context.getReview(id),
-            ),
+            id => context.getReview(id),
+        ),
+        ModifyReview: async (_, { input }, context) => context.modifyWingsReview(input),
     },
 };
 

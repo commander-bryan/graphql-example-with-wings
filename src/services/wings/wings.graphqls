@@ -26,7 +26,13 @@ type Location {
 # -----------------------------------------------------------------------------
 # Inputs
 
-input WingsReviewInput {
+input ModifiedWingsReviewInput {
+    wings: WingsInput!
+    location: LocationInput!
+    id: String!
+}
+
+input NewWingsReviewInput {
     wings: WingsInput!
     location: LocationInput!
 }
@@ -62,5 +68,6 @@ extend type Query {
 # Mutations
 
 extend type Mutation {
-    AddReview(input: WingsReviewInput!): WingsReview!
+    AddReview(input: NewWingsReviewInput!): WingsReview!
+    ModifyReview(input: ModifiedWingsReviewInput!): WingsReview!
 }

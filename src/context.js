@@ -1,5 +1,6 @@
 import uuid from 'uuid';
 
+// data stored in memory for now
 const db = {
     WingsReview: {
         review_1: {
@@ -109,12 +110,27 @@ const buildContext = (request, response) => {
         return id;
     };
 
+    const modifyWingsReview = async (modifiedWingsReview) => {
+        const { id } = modifiedWingsReview;
+        if (id && db.WingsReview[id]) {
+            const newWingsReview = {
+                id,
+                wings: addWings(modifiedWingsReview.wings),
+                location: addLocation(modifiedWingsReview.location),
+            };
+            db.WingsReview[id] = newWingsReview;
+            return db.WingsReview[id];
+        }
+        return new Error('Review not found');
+    };
+
     return {
         request,
         response,
         getReview,
         getReviews,
         addNewWingsReview,
+        modifyWingsReview,
     };
 };
 

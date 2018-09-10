@@ -148,8 +148,31 @@ describe('Wings Resolver Map', () => {
                 expect(context.getReview).toHaveBeenCalledWith('newId');
             });
 
-            it('returns the updated ClassAccess data', () => {
+            it('returns the updated review', () => {
                 expect(result).toEqual(mockWingsReview);
+            });
+        });
+        describe('ModifyWingsReview', () => {
+            let result;
+
+            beforeEach(async () => {
+                context = {
+                    getReview: jest.fn(() => mockWingsReview),
+                    modifyWingsReview: jest.fn(async () => ({ ...input, id: 'review_1' })),
+                };
+                result = await resolverMap.Mutation.ModifyReview(
+                    null,
+                    { input: { ...input, id: 'review_1' } },
+                    context,
+                );
+            });
+
+            it('calls modifyWingsReview on the context', () => {
+                expect(context.modifyWingsReview).toHaveBeenCalledWith({ ...input, id: 'review_1' });
+            });
+
+            it('returns the updated modified review', () => {
+                expect(result).toEqual({ ...input, id: 'review_1' });
             });
         });
     });
