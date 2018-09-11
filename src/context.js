@@ -119,7 +119,7 @@ const buildContext = (request, response) => {
                 location: addLocation(modifiedWingsReview.location),
             };
             db.WingsReview[id] = newWingsReview;
-            return db.WingsReview[id];
+            return getReview(id);
         }
         return new Error('Review not found');
     };
